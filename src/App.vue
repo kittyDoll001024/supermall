@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- 在 vue3 中 keep-alive 发生了改变 -->
+    <router-view v-slot="{ Component }">
+      <!-- exclude 把该组件排除在缓存外 -->
+      <keep-alive exclude="Detail">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+    <main-tab-bar class="tab-bat"></main-tab-bar>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MainTabBar from "components/content/maintabbar/MainTabBar.vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainTabBar
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "assets/css/base.css"
 </style>
